@@ -1,0 +1,19 @@
+version: "3"
+services:
+  nginx:
+    image: shaytanchik/nginx-jenkins:1.{{ BUILD_NUMBER }}
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - mynetwork
+  apache_php:
+    image: shaytanchik/nginx-jenkins:1.{{ BUILD_NUMBER }}
+    container_name: test-containerA
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
